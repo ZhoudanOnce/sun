@@ -1,0 +1,103 @@
+@import "normalize.css";
+
+:root {
+  /* 太阳的背景色和前景色 */
+  --sun-bkg: #ffeea2;
+  --sun-fg: orange;
+  /* 月亮的前景色和背景色 */
+  --moon-bkg: #040720;
+  --moon-fg: cyan;
+  /* 太阳和月亮的大小 */
+  --size: calc(100vmin * 0.6);
+  /* 月牙的曲率 0~1 */
+  --moon-curvature: 0.25;
+  /* 海的高度 */
+  --sea-height: calc(50% - var(--size) * 0.3);
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  cursor: ew-resize;
+}
+
+#moon {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: var(--moon-bkg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#moon::after {
+  --curve: calc(var(--size) * var(--moon-curvature));
+  content: "";
+  width: var(--size);
+  height: var(--size);
+  box-shadow: var(--curve) var(--curve) 0 var(--moon-fg);
+  transform: translate(calc(var(--curve) * -1), calc(var(--curve) * -1));
+  border-radius: 50%;
+}
+
+#sun {
+  position: absolute;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  background-color: var(--sun-bkg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#sun::after {
+  content: "";
+  width: var(--size);
+  height: var(--size);
+  background-color: var(--sun-fg);
+  border-radius: 50%;
+}
+
+#sea {
+  position: absolute;
+  bottom: 0;
+  z-index: 20;
+  width: 100%;
+  height: var(--sea-height);
+  backdrop-filter: blur(100px);
+}
+
+.text {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: var(--sea-height);
+  display: flex;
+  display: flex;
+  justify-content: center;
+}
+
+.text::after {
+  content: "敲代码的日与夜";
+  position: absolute;
+  top: 10%;
+  font-size: 2rem;
+  letter-spacing: 0.5rem;
+  white-space: nowrap;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+}
+
+#text-moon {
+  z-index: 30;
+  color: white;
+}
+
+#text-sun {
+  z-index: 40;
+  color: black;
+}
