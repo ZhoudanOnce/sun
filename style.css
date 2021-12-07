@@ -88,7 +88,7 @@ body {
   font-size: 2rem;
   letter-spacing: 0.5rem;
   white-space: nowrap;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+  font-family: "微软雅黑", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
     "Liberation Mono", "Courier New", monospace;
 }
 
